@@ -137,7 +137,7 @@ body {
 }
 #postTitle::placeholder, #postContent::placeholder { color: #a08a63; }
 #postTitle:focus, #postContent:focus { border-color: var(--accent); }
-.compose-footer { display: flex; align-items: center; justify-content: space-between; }
+.compose-footer { display: flex; align-items: center; justify-content: flex-end; }
 .anony-badge { font-size: 12px; color: var(--text-dim); }
 
 .btn {

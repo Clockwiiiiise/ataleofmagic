@@ -25,14 +25,14 @@
   <header class="site-header">
     <div class="container header-inner">
       <div class="logo">
-        <span class="logo-mark"><img src="/images/logo.png" alt="logo" onerror="this.parentNode.textContent='📖'" /></span>
+        <span class="logo-mark"><img src="/images/logo.png" alt="logo" onerror="this.parentNode.textContent='院'" /></span>
         <span class="logo-text">学院论坛<small>A TALE OF MAGIC</small></span>
       </div>
       <div class="user-box">
         <!-- 点击头像可上传自定义头像 -->
         <button class="avatar-btn" id="avatarBtn" type="button" title="点击更换头像">
           <span class="avatar" id="userAvatar">?</span>
-          <span class="avatar-edit">✎</span>
+          <span class="avatar-edit">+</span>
         </button>
         <input id="avatarInput" type="file" accept="image/*" hidden />
         <input id="usernameInput" type="text" maxlength="24" placeholder="设置你的用户名…" />
@@ -54,21 +54,20 @@
 
     <!-- 发帖区 -->
     <section class="card compose-card">
-      <h2><span class="icon">✍️</span> 匿名发布新帖</h2>
+      <h2>你想要说些什么呢…</h2>
       <form id="postForm">
         <input id="postTitle" type="text" maxlength="80" placeholder="标题（最多 80 字）" required />
         <textarea id="postContent" rows="4" maxlength="5000" placeholder="写下你想说的话，没有人知道你是谁…" required></textarea>
 
         <!-- 图片上传 -->
         <div class="uploader">
-          <button type="button" class="btn btn-ghost" id="pickImages">📷 添加图片</button>
+          <button type="button" class="btn btn-ghost" id="pickImages">添加图片</button>
           <span class="upload-tip">最多 3 张，单张 8MB 内，自动压缩</span>
           <input id="postImages" type="file" accept="image/*" multiple hidden />
         </div>
         <div class="preview-grid" id="postPreview"></div>
 
         <div class="compose-footer">
-          <span class="anony-badge">🕶️ 你的身份将完全保密</span>
           <button type="submit" class="btn btn-primary" id="publishBtn">发布</button>
         </div>
       </form>
@@ -76,11 +75,11 @@
 
     <!-- 帖子列表 -->
     <section class="post-list" id="postList"></section>
-    <p class="empty-tip" id="emptyTip" hidden>论坛还很安静，来做第一个发言的同学吧 ✨</p>
+    <p class="empty-tip" id="emptyTip" hidden>论坛还很安静，来做第一个发言的同学吧</p>
   </main>
 
   <footer class="site-footer">
-    <p>📖 学院论坛 · 羊皮纸上的匿名角落</p>
+    <p>学院论坛 · 羊皮纸上的匿名角落</p>
   </footer>
 
   <!-- 图片放大查看 -->

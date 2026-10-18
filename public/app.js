@@ -80,7 +80,7 @@
       localStorage.setItem("xueyuan_avatar", avatarUrl);
       localStorage.setItem("xueyuan_avatar_data", avatarData);
       renderUser();
-      toast("头像已更新 🎨");
+      toast("头像已更新");
       loadPosts();
     } catch (e) {
       toast("头像上传失败：" + e.message, true);
@@ -261,11 +261,11 @@
     }
 
     const meta = el("div", "post-meta");
-    meta.appendChild(el("span", "anony-tag", "🕶️ 匿名同学"));
+    meta.appendChild(el("span", "anony-tag", "匿名同学"));
     meta.appendChild(el("span", "", fmtTime(post.createdAt)));
     const cmtBtn = el("button", "btn btn-ghost");
     cmtBtn.type = "button";
-    cmtBtn.textContent = `💬 评论 (${(post.comments || []).length})`;
+    cmtBtn.textContent = `评论 (${(post.comments || []).length})`;
     meta.appendChild(cmtBtn);
     card.appendChild(meta);
 
@@ -317,7 +317,7 @@
           post.comments.push(comment);
           renderComments();
           panel.classList.add("open");
-          cmtBtn.textContent = `💬 评论 (${post.comments.length})`;
+          cmtBtn.textContent = `评论 (${post.comments.length})`;
         } catch (err) {
           toast(err.message, true);
         } finally {
@@ -366,7 +366,7 @@
       content.value = "";
       pendingImages = [];
       renderPreview();
-      toast("发布成功，心声已誊写到羊皮纸上 📜");
+      toast("发布成功，心声已誊写到羊皮纸上");
       loadPosts();
       window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (err) {
