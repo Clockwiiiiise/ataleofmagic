@@ -1,0 +1,15 @@
+{
+  "name": "xingyu-anonymous-treehole",
+  "version": "1.0.0",
+  "private": true,
+  "description": "星语 · 匿名树洞 —— 匿名发帖 + 用户名评论的个人网站",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["anonymous", "blog", "nodejs"],
+  "license": "MIT"
+}

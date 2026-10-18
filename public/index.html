@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>星语 · 匿名树洞</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌌</text></svg>" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <!-- ==========================================================
+       图片资源总目录：public/images/
+       本页共引用 3 张图片，把文件放进上面的目录即可生效，
+       文件名必须与下面注释里写的一致（全小写）。
+       ========================================================== -->
+
+  <!-- 背景装饰层：纯 CSS/SVG 实现，无图片也能正常显示 -->
+  <div class="bg-deco" aria-hidden="true">
+
+    <!-- ┌──────────────────────────────────────────────────────┐
+         │ 图片位 ①  全站背景图                                  │
+         │ 放置目录：public/images/                              │
+         │ 文件名  ：bg.jpg                                      │
+         │ 规格    ：1920 × 1080 px（16:9）· JPG · ≤ 800 KB      │
+         │ 显示    ：16% 透明度铺满全屏                          │
+         │ 要求    ：请用深色调图片，否则正文文字看不清          │
+         │ 缺图时  ：自动移除，回退为渐变光斑 + 星空点阵          │
+         └──────────────────────────────────────────────────────┘ -->
+    <img class="bg-photo" src="/images/bg.jpg" alt="" onerror="this.remove()" />
+
+    <div class="bg-photo-overlay"></div>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="stars"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">
+
+        <!-- ┌────────────────────────────────────────────────────┐
+             │ 图片位 ②  站点 Logo                                 │
+             │ 放置目录：public/images/                            │
+             │ 文件名  ：logo.png                                  │
+             │ 规格    ：256 × 256 px（1:1）· PNG 透明背景         │
+             │           ≤ 200 KB                                  │
+             │ 显示    ：左上角，约 34 × 34 px                      │
+             │ 缺图时  ：自动回退为 🌌 表情符号                     │
+             └────────────────────────────────────────────────────┘ -->
+        <span class="logo-mark"><img src="/images/logo.png" alt="logo" onerror="this.parentNode.textContent='🌌'" /></span>
+
+        <span class="logo-text">星语<small>匿名树洞</small></span>
+      </div>
+      <div class="user-box">
+        <span class="avatar" id="userAvatar">?</span>
+        <input id="usernameInput" type="text" maxlength="24" placeholder="设置你的用户名…" />
+        <span class="user-hint">评论时显示</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ┌──────────────────────────────────────────────────────┐
+         │ 图片位 ③  顶部横幅大图                                │
+         │ 放置目录：public/images/                              │
+         │ 文件名  ：banner.jpg                                  │
+         │ 规格    ：1920 × 640 px（3:1 宽幅）· JPG · ≤ 500 KB   │
+         │ 显示    ：英雄区背景，55% 透明度                      │
+         │ 构图    ：主体居中，标题会盖在中间                    │
+         │ 缺图时  ：自动移除，回退为渐变文字标题                │
+         └──────────────────────────────────────────────────────┘ -->
+    <section class="hero">
+      <img class="hero-img" src="/images/banner.jpg" alt="" onerror="this.remove()" />
+      <div class="hero-inner">
+        <h1>说给夜空听</h1>
+        <p>在这里，每个人都是一颗匿名的星。<br />发帖不留名，评论留名声。</p>
+      </div>
+      <svg class="hero-wave" viewBox="0 0 680 60" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,30 C110,60 220,0 340,30 C460,60 570,0 680,30 L680,60 L0,60 Z" fill="rgba(139,92,246,0.25)"/>
+        <path d="M0,40 C120,10 240,55 340,40 C440,25 560,50 680,38 L680,60 L0,60 Z" fill="rgba(34,211,238,0.18)"/>
+      </svg>
+    </section>
+
+    <!-- 发帖区（纯表单，无图片） -->
+    <section class="card compose-card">
+      <h2><span class="icon">✍️</span> 匿名发布新帖</h2>
+      <form id="postForm">
+        <input id="postTitle" type="text" maxlength="80" placeholder="标题（最多 80 字）" required />
+        <textarea id="postContent" rows="4" maxlength="5000" placeholder="写下你想说的话，没有人知道你是谁…" required></textarea>
+        <div class="compose-footer">
+          <span class="anony-badge">🕶️ 你的身份将完全保密</span>
+          <button type="submit" class="btn btn-primary">发布</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- 帖子列表（由 app.js 动态渲染，无静态图片） -->
+    <section class="post-list" id="postList"></section>
+    <p class="empty-tip" id="emptyTip" hidden>夜空还很安静，来做第一个发声的人吧 ✨</p>
+  </main>
+
+  <footer class="site-footer">
+    <p>🌌 星语 · 用纯代码构筑的匿名角落</p>
+  </footer>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

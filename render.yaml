@@ -1,0 +1,14 @@
+# Render 一键部署蓝图
+# 用法：把项目推到 GitHub 后，在 Render 新建 Blueprint 并选择本仓库即可
+services:
+  - type: web
+    name: xingyu-treehole
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: 22.11.0
