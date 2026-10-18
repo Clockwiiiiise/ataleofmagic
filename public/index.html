@@ -3,58 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>星语 · 匿名树洞</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌌</text></svg>" />
+  <title>学院论坛 · 羊皮纸上的匿名角落</title>
+  <link rel="icon" href="/images/logo.png" />
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
 
   <!-- ==========================================================
-       图片资源总目录：public/images/
-       本页共引用 3 张图片，把文件放进上面的目录即可生效，
-       文件名必须与下面注释里写的一致（全小写）。
+       图片资源目录：public/images/
+       ① bg.jpg      1920×1080 JPG ≤800KB   全站羊皮纸背景
+       ② logo.png    256×256   PNG ≤200KB   站点 Logo
+       ③ banner.jpg  1920×640  JPG ≤500KB   顶部黑金横幅
        ========================================================== -->
 
-  <!-- 背景装饰层：纯 CSS/SVG 实现，无图片也能正常显示 -->
   <div class="bg-deco" aria-hidden="true">
-
-    <!-- ┌──────────────────────────────────────────────────────┐
-         │ 图片位 ①  全站背景图                                  │
-         │ 放置目录：public/images/                              │
-         │ 文件名  ：bg.jpg                                      │
-         │ 规格    ：1920 × 1080 px（16:9）· JPG · ≤ 800 KB      │
-         │ 显示    ：16% 透明度铺满全屏                          │
-         │ 要求    ：请用深色调图片，否则正文文字看不清          │
-         │ 缺图时  ：自动移除，回退为渐变光斑 + 星空点阵          │
-         └──────────────────────────────────────────────────────┘ -->
     <img class="bg-photo" src="/images/bg.jpg" alt="" onerror="this.remove()" />
-
     <div class="bg-photo-overlay"></div>
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
     <div class="stars"></div>
   </div>
 
   <header class="site-header">
     <div class="container header-inner">
       <div class="logo">
-
-        <!-- ┌────────────────────────────────────────────────────┐
-             │ 图片位 ②  站点 Logo                                 │
-             │ 放置目录：public/images/                            │
-             │ 文件名  ：logo.png                                  │
-             │ 规格    ：256 × 256 px（1:1）· PNG 透明背景         │
-             │           ≤ 200 KB                                  │
-             │ 显示    ：左上角，约 34 × 34 px                      │
-             │ 缺图时  ：自动回退为 🌌 表情符号                     │
-             └────────────────────────────────────────────────────┘ -->
-        <span class="logo-mark"><img src="/images/logo.png" alt="logo" onerror="this.parentNode.textContent='🌌'" /></span>
-
-        <span class="logo-text">星语<small>匿名树洞</small></span>
+        <span class="logo-mark"><img src="/images/logo.png" alt="logo" onerror="this.parentNode.textContent='📖'" /></span>
+        <span class="logo-text">学院论坛<small>A TALE OF MAGIC</small></span>
       </div>
       <div class="user-box">
-        <span class="avatar" id="userAvatar">?</span>
+        <!-- 点击头像可上传自定义头像 -->
+        <button class="avatar-btn" id="avatarBtn" type="button" title="点击更换头像">
+          <span class="avatar" id="userAvatar">?</span>
+          <span class="avatar-edit">✎</span>
+        </button>
+        <input id="avatarInput" type="file" accept="image/*" hidden />
         <input id="usernameInput" type="text" maxlength="24" placeholder="设置你的用户名…" />
         <span class="user-hint">评论时显示</span>
       </div>
@@ -63,48 +43,50 @@
 
   <main class="container">
 
-    <!-- ┌──────────────────────────────────────────────────────┐
-         │ 图片位 ③  顶部横幅大图                                │
-         │ 放置目录：public/images/                              │
-         │ 文件名  ：banner.jpg                                  │
-         │ 规格    ：1920 × 640 px（3:1 宽幅）· JPG · ≤ 500 KB   │
-         │ 显示    ：英雄区背景，55% 透明度                      │
-         │ 构图    ：主体居中，标题会盖在中间                    │
-         │ 缺图时  ：自动移除，回退为渐变文字标题                │
-         └──────────────────────────────────────────────────────┘ -->
+    <!-- 英雄区：黑金横幅 + 新文案 -->
     <section class="hero">
-      <img class="hero-img" src="/images/banner.jpg" alt="" onerror="this.remove()" />
+      <img class="hero-img" src="/images/banner.jpg" alt="学院论坛" onerror="this.remove()" />
       <div class="hero-inner">
-        <h1>说给夜空听</h1>
-        <p>在这里，每个人都是一颗匿名的星。<br />发帖不留名，评论留名声。</p>
+        <h1>在羊皮上写下心声</h1>
+        <p>和同学们共享话题</p>
       </div>
-      <svg class="hero-wave" viewBox="0 0 680 60" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M0,30 C110,60 220,0 340,30 C460,60 570,0 680,30 L680,60 L0,60 Z" fill="rgba(139,92,246,0.25)"/>
-        <path d="M0,40 C120,10 240,55 340,40 C440,25 560,50 680,38 L680,60 L0,60 Z" fill="rgba(34,211,238,0.18)"/>
-      </svg>
     </section>
 
-    <!-- 发帖区（纯表单，无图片） -->
+    <!-- 发帖区 -->
     <section class="card compose-card">
       <h2><span class="icon">✍️</span> 匿名发布新帖</h2>
       <form id="postForm">
         <input id="postTitle" type="text" maxlength="80" placeholder="标题（最多 80 字）" required />
         <textarea id="postContent" rows="4" maxlength="5000" placeholder="写下你想说的话，没有人知道你是谁…" required></textarea>
+
+        <!-- 图片上传 -->
+        <div class="uploader">
+          <button type="button" class="btn btn-ghost" id="pickImages">📷 添加图片</button>
+          <span class="upload-tip">最多 3 张，单张 8MB 内，自动压缩</span>
+          <input id="postImages" type="file" accept="image/*" multiple hidden />
+        </div>
+        <div class="preview-grid" id="postPreview"></div>
+
         <div class="compose-footer">
           <span class="anony-badge">🕶️ 你的身份将完全保密</span>
-          <button type="submit" class="btn btn-primary">发布</button>
+          <button type="submit" class="btn btn-primary" id="publishBtn">发布</button>
         </div>
       </form>
     </section>
 
-    <!-- 帖子列表（由 app.js 动态渲染，无静态图片） -->
+    <!-- 帖子列表 -->
     <section class="post-list" id="postList"></section>
-    <p class="empty-tip" id="emptyTip" hidden>夜空还很安静，来做第一个发声的人吧 ✨</p>
+    <p class="empty-tip" id="emptyTip" hidden>论坛还很安静，来做第一个发言的同学吧 ✨</p>
   </main>
 
   <footer class="site-footer">
-    <p>🌌 星语 · 用纯代码构筑的匿名角落</p>
+    <p>📖 学院论坛 · 羊皮纸上的匿名角落</p>
   </footer>
+
+  <!-- 图片放大查看 -->
+  <div class="lightbox" id="lightbox" hidden>
+    <img id="lightboxImg" src="" alt="查看大图" />
+  </div>
 
   <div class="toast" id="toast" hidden></div>
 
